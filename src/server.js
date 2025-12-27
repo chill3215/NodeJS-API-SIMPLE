@@ -3,6 +3,7 @@ import userRoutes from './user.routes';
 import mainRoutes from "./main.routes";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import compression from "compression";
 
 const app = express();
 const port = 3000;
@@ -17,6 +18,8 @@ const limiter = rateLimit({
 })
 
 app.use(limiter);
+
+app.use(compression())
 
 //express.json: middleware, allow to read json from the request body
 app.use(express.json());
